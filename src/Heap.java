@@ -21,7 +21,7 @@ class Heap {
 
     // return root value and rebuild heap
     public int GetMax() {
-        if (HeapArray[0] == -1) return -1; // if heap is empty
+        if (HeapArray == null || HeapArray[0] == -1) return -1; // if heap is null or empty
         int res = HeapArray[0];
         int indexTemp = 0;
         HeapArray[indexTemp] = -1;
