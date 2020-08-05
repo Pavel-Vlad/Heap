@@ -21,23 +21,27 @@ class Heap {
 
     // return root value and rebuild heap
     public int GetMax() {
-        if (lastIndex == -1) return -1; // if heap is empty
+        if (HeapArray[0] == -1) return -1; // if heap is empty
         int res = HeapArray[0];
         int indexTemp = 0;
         HeapArray[indexTemp] = -1;
         HeapArray[indexTemp] = HeapArray[lastIndex];
         HeapArray[lastIndex] = -1;
-        while (true) {
-            int indexLeftChild = 2 * indexTemp + 1;
-            int indexRightChild = 2 * indexTemp + 2;
-            int indexMaxChild = HeapArray[indexLeftChild] > HeapArray[indexRightChild] ? indexLeftChild : indexRightChild;
-            if (HeapArray[indexMaxChild] > HeapArray[indexTemp]) {
-                int el = HeapArray[indexTemp];
-                HeapArray[indexTemp] = HeapArray[indexMaxChild];
-                HeapArray[indexMaxChild] = el;
-                indexTemp = indexMaxChild;
-            } else break;
+        lastIndex--;
+        if (HeapArray.length > 1) {
+            while (true) {
+                int indexLeftChild = 2 * indexTemp + 1;
+                int indexRightChild = 2 * indexTemp + 2;
+                int indexMaxChild = HeapArray[indexLeftChild] > HeapArray[indexRightChild] ? indexLeftChild : indexRightChild;
+                if (HeapArray[indexMaxChild] > HeapArray[indexTemp]) {
+                    int el = HeapArray[indexTemp];
+                    HeapArray[indexTemp] = HeapArray[indexMaxChild];
+                    HeapArray[indexMaxChild] = el;
+                    indexTemp = indexMaxChild;
+                } else break;
+            }
         }
+
         return res;
     }
 
