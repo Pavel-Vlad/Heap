@@ -11,6 +11,7 @@ class Heap {
     // create HeapArray from given array
     // heapArray size based on depth
     public void MakeHeap(int[] a, int depth) {
+        if (a == null) return; //
         int arSize = (int) (Math.pow(2, (depth + 1))) - 1;
         HeapArray = new int[arSize];
         Arrays.fill(HeapArray, -1);
@@ -58,6 +59,7 @@ class Heap {
                 break;
             }
         }
+        // if heaparray full
         if (indexKey == HeapArray.length) {
             lastIndex = indexKey - 1;
             return false;
