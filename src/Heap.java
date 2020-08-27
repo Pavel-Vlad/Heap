@@ -33,6 +33,7 @@ class Heap {
             while (true) {
                 int indexLeftChild = 2 * indexTemp + 1;
                 int indexRightChild = 2 * indexTemp + 2;
+                if (indexRightChild > HeapArray.length) break;
                 int indexMaxChild = HeapArray[indexLeftChild] > HeapArray[indexRightChild] ? indexLeftChild : indexRightChild;
                 if (HeapArray[indexMaxChild] > HeapArray[indexTemp]) {
                     int el = HeapArray[indexTemp];
@@ -42,7 +43,6 @@ class Heap {
                 } else break;
             }
         }
-
         return res;
     }
 
